@@ -15,6 +15,12 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
+        // Modificar el request
+        $request->request->add([
+            'username' => Str::slug($request->username),
+        ]);
+
+
         $this->validate($request, [
             'name' => 'required|max:30',
             'username' => 'required|unique:users|min:3|max:20',
@@ -24,13 +30,22 @@ class RegisterController extends Controller
 
         User::create([
             'name' => $request->name,
-            'username' => Str::slug($request->username),
+            'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password
         ]);
 
-        // Redireccionar al usuario
+        // Autenticar al usuario
+        auth()->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
 
+        // Otra sintaxis
+        // auth()->attempt($request->only('email', 'password'));
+
+        // Redireccionar al usuario
+        return redirect()->route('posts.index');
 
     }
 }
