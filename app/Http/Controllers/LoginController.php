@@ -24,7 +24,7 @@ class LoginController extends Controller
             return back()->with('mensaje', 'Invalid username or password.');
         }
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
 
