@@ -1,6 +1,6 @@
 import Dropzone from "dropzone";
 
-console.log('Hola');
+
 Dropzone.autoDiscover = false;
 
 const dropzone = new Dropzone('#dropzone', {
@@ -12,3 +12,21 @@ const dropzone = new Dropzone('#dropzone', {
     uploadMultiple: false,
 
 });
+
+dropzone.on('sending', function(file, xhr, formdata){
+    console.log(file);
+});
+
+
+dropzone.on('success', function(file, response){
+    console.log(response);
+});
+
+dropzone.on('error', function(file, messagge){
+    console.log(messagge);
+});
+
+dropzone.on('removedfile', function(){
+    console.log("Archivo eliminado");
+});
+

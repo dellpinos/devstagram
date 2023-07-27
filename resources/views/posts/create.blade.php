@@ -4,11 +4,16 @@
     Crea una nueva publicación
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('contenido')
     <div class=" md:flex md:items-center">
         <div class=" md:w-6/12 px-10 ">
-            <form action="/imagenes" id="dropzone" class=" dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center" action="">
-
+            <form action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone"
+                class=" dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
             </form>
         </div>
         <div class=" md:w-6/12 p-4 mx-5 md:mx-0 md:p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
@@ -37,7 +42,7 @@
                 </div>
 
                 <input type="submit" value="Publicar"
-                class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
+                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
             </form>
         </div>
 
