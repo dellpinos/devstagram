@@ -13,18 +13,10 @@ const dropzone = new Dropzone('#dropzone', {
 
 });
 
-dropzone.on('sending', function(file, xhr, formdata){
-    console.log(file);
-});
-
-
 dropzone.on('success', function(file, response){
-    console.log(response);
+    document.querySelector('[name="imagen"]').value = response.imagen;
 });
 
-dropzone.on('error', function(file, messagge){
-    console.log(messagge);
-});
 
 dropzone.on('removedfile', function(){
     console.log("Archivo eliminado");
