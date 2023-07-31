@@ -35,23 +35,6 @@ class PostController extends Controller
             'imagen' => 'required'
         ]);
 
-        
-        // Post::create([
-        //     'titulo' => $request->titulo,
-        //     'descripcion' => $request->descripcion,
-        //     'imagen' => $request->imagen,
-        //     'user_id' => auth()->user()->id
-        // ]);
-
-        // Otra forma de crear registros
-        // $post = new Post;
-        // $post->titulo = $request->titulo;
-        // $post->descripcion = $request->descripcion;
-        // $post->imagen = $request->imagen;
-        // $post->user_id = auth()->user()->id;
-        // $post->save();
-
-
         $request->user()->posts()->create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
@@ -63,4 +46,13 @@ class PostController extends Controller
 
         return redirect()->route('posts.index', auth()->user()->username);
     }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post,
+            'user' => $user
+        ]);
+    }
+
 }
