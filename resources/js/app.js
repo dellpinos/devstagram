@@ -1,6 +1,7 @@
 import Dropzone from "dropzone";
 
 
+
 Dropzone.autoDiscover = false;
 
 const dropzone = new Dropzone('#dropzone', {
@@ -24,6 +25,8 @@ const dropzone = new Dropzone('#dropzone', {
         }
     }
 });
+
+
 
 dropzone.on('success', function(file, response){
     document.querySelector('[name="imagen"]').value = response.imagen;

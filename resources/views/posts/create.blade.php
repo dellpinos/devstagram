@@ -7,6 +7,9 @@
 @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endpush
+@push('scripts')
+    @vite('resources/js/app.js')
+@endpush
 
 @section('contenido')
     <div class=" md:flex md:items-center">
@@ -41,7 +44,7 @@
                 </div>
 
                 <div class=" mb-5">
-                    <input type="hidden" name="imagen" value="{{ old('imagen') }}"/>
+                    <input type="hidden" name="imagen" value="{{ old('imagen') }}" />
                     @error('imagen')
                         <p class=" bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
