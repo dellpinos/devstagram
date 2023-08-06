@@ -50,6 +50,11 @@ class PostController extends Controller
 
     public function show(User $user, Post $post)
     {
+
+        if($post->user_id !== $user->id) { // Si cambio el username puedo acceder a publicaciones de otros usuarios, este código comprueba que el "post" y el "user" consultados a la base de datos se correspondan
+            return redirect()->route('register'); // redirijo a register porque aun no existe una ruta principal o #404
+
+        }
         return view('posts.show', [
             'post' => $post,
             'user' => $user
