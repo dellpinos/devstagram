@@ -27,7 +27,7 @@
                     @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">Passsword</label>
+                    <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">Password</label>
                     <input type="password" id="password" name="password" placeholder="Tu password"
                         class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror">
                     @error('password')
