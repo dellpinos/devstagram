@@ -9,7 +9,9 @@
     <div class="flex justify-center mx-auto ">
         <div class=" w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class=" w-8/12 lg:w-6/12 px-5">
-                <img class="rounded-full" src="{{ $user->imagen ? asset('perfiles'. '/' . $user->imagen) : asset('img/usuario.svg') }}" alt="Imagen usuario" >
+                <img class="rounded-full"
+                    src="{{ $user->imagen ? asset('perfiles' . '/' . $user->imagen) : asset('img/usuario.svg') }}"
+                    alt="Imagen usuario">
             </div>
             <div
                 class=" md:w-8/12 lg:w-6/12 px-5 flex items-center flex-col md:justify-center md:items-start py-10 md:py-10">
@@ -44,6 +46,20 @@
                     {{ $user->posts->count() }}
                     <span class=" font-normal">Posts</span>
                 </p>
+
+                @auth
+                    <form method="POST" action="">
+                        @csrf
+                        <input type="submit" value="Seguir"
+                            class=" bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer" />
+                    </form>
+                    <form method="POST" action="">
+                        @csrf
+                        <input type="submit" value="Dejar de Seguir"
+                            class=" bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer" />
+                    </form>
+                @endauth
+
             </div>
         </div>
     </div>
