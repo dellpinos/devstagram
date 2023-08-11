@@ -2,13 +2,12 @@
 
 @section('titulo')
 
-papan!!!
+Esta es la homepage
 
 @endsection
 
 @section('contenido')
 
-Otro ejemplo.
-<h2> Esta es una prueba</h2>
+Este es "el contenido"
 
 @endsection
